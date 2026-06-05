@@ -13,28 +13,28 @@
             </ol>
         </nav>
 
-        <h3 class="fw-bold mb-4">Request Stock: <?php echo htmlspecialchars($product->sepatu_nama); ?></h3>
+        <h3 class="fw-bold mb-4">Request Stock: <?php echo htmlspecialchars($product->product_name); ?></h3>
 
         <div class="card p-4 shadow-sm border-0" style="border-radius: 12px; max-width: 650px;">
             <div class="d-flex align-items-center mb-4 pb-3 border-bottom">
-                <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $product->sepatu_gambar; ?>" alt="Shoe" width="90" height="90" class="rounded object-fit-cover shadow-sm me-3 border">
+                <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $product->product_image; ?>" alt="Shoe" width="90" height="90" class="rounded object-fit-cover shadow-sm me-3 border">
                 <div>
-                    <h5 class="fw-bold mb-1"><?php echo htmlspecialchars($product->sepatu_nama); ?></h5>
-                    <span class="badge bg-secondary"><?php echo htmlspecialchars($product->kategori_nama); ?></span>
-                    <span class="text-danger fw-bold ms-2">Rp. <?php echo number_format($product->sepatu_harga); ?></span>
+                    <h5 class="fw-bold mb-1"><?php echo htmlspecialchars($product->product_name); ?></h5>
+                    <span class="badge bg-secondary"><?php echo htmlspecialchars($product->category_name); ?></span>
+                    <span class="text-danger fw-bold ms-2">Rp. <?php echo number_format($product->product_price); ?></span>
                 </div>
             </div>
 
-            <form action="<?php echo BASE_URL; ?>admin/request_stock/<?php echo $product->sepatu_id; ?>" method="POST">
+            <form action="<?php echo BASE_URL; ?>admin/request_stock/<?php echo $product->product_id; ?>" method="POST">
                 <p class="text-muted small mb-4"><i class="fa-solid fa-circle-info me-2 text-primary"></i> Specify the number of pairs to request from the supplier for each size below. Entering 0 will skip requesting that size.</p>
 
                 <div class="row g-3">
                     <?php foreach ($sizes as $s): ?>
                         <div class="col-md-6 d-flex align-items-center justify-content-between border-bottom pb-2">
-                            <label for="ukuran_<?php echo $s->ukuran_id; ?>" class="form-label fw-bold mb-0">
-                                Size <?php echo $s->ukuran; ?> <span class="text-muted small font-normal">(Current: <?php echo $s->stok; ?>)</span>
+                            <label for="ukuran_<?php echo $s->size_id; ?>" class="form-label fw-bold mb-0">
+                                Size <?php echo $s->size_value; ?> <span class="text-muted small font-normal">(Current: <?php echo $s->stock; ?>)</span>
                             </label>
-                            <input type="number" class="form-control text-center" id="ukuran_<?php echo $s->ukuran_id; ?>" name="ukuran[<?php echo $s->ukuran_id; ?>]" value="0" min="0" max="100" style="width: 100px;">
+                            <input type="number" class="form-control text-center" id="ukuran_<?php echo $s->size_id; ?>" name="size_value[<?php echo $s->size_id; ?>]" value="0" min="0" max="100" style="width: 100px;">
                         </div>
                     <?php endforeach; ?>
                 </div>

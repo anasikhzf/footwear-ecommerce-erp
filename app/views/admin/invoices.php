@@ -48,20 +48,20 @@
                                 <tr class="border-bottom">
                                     <td class="ps-4 fw-medium"><?php echo $no++; ?></td>
                                     <td class="fw-bold">#TC-<?php echo $b->transaction_id; ?></td>
-                                    <td><?php echo htmlspecialchars($b->sepatu_nama); ?></td>
-                                    <td class="text-center"><?php echo $b->ukuran; ?></td>
+                                    <td><?php echo htmlspecialchars($b->product_name); ?></td>
+                                    <td class="text-center"><?php echo $b->size_value; ?></td>
                                     <td class="text-center fw-medium"><?php echo $b->quantity; ?></td>
                                     <td class="text-end text-muted small">Rp. <?php echo number_format($b->unit_price); ?></td>
                                     <td class="text-end fw-bold text-danger">Rp. <?php echo number_format($b->total_cost); ?></td>
                                     <td class="text-center">
-                                        <?php if ($b->status_pembayaran === 'sudah dibayar'): ?>
+                                        <?php if ($b->payment_status === 'paid'): ?>
                                             <span class="badge bg-success"><i class="fa-solid fa-circle-check me-1"></i> Paid</span>
                                         <?php else: ?>
                                             <span class="badge bg-warning text-dark"><i class="fa-solid fa-clock me-1"></i> Unpaid</span>
                                         <?php endif; ?>
                                     </td>
                                     <td class="text-end pe-4">
-                                        <?php if ($b->status_pembayaran !== 'sudah dibayar'): ?>
+                                        <?php if ($b->payment_status !== 'paid'): ?>
                                             <button class="btn btn-sm btn-dark pay-btn" 
                                                     data-id="<?php echo $b->transaction_id; ?>" 
                                                     data-cost="<?php echo $b->total_cost; ?>" 

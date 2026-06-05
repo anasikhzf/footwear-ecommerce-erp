@@ -48,10 +48,10 @@
                         $subtotal += $item->total_price;
                     ?>
                         <div class="d-flex align-items-center mb-3">
-                            <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $item->sepatu_gambar; ?>" alt="<?php echo $item->sepatu_nama; ?>" width="50" height="50" class="rounded me-3 object-fit-cover border shadow-sm">
+                            <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $item->product_image; ?>" alt="<?php echo $item->product_name; ?>" width="50" height="50" class="rounded me-3 object-fit-cover border shadow-sm">
                             <div class="flex-grow-1">
-                                <h6 class="fw-bold mb-0" style="font-size: 0.9rem;"><?php echo htmlspecialchars($item->sepatu_nama); ?></h6>
-                                <span class="text-muted small">Qty: <?php echo $item->quantity; ?> | Size: <?php echo $item->ukuran; ?></span>
+                                <h6 class="fw-bold mb-0" style="font-size: 0.9rem;"><?php echo htmlspecialchars($item->product_name); ?></h6>
+                                <span class="text-muted small">Qty: <?php echo $item->quantity; ?> | Size: <?php echo $item->size_value; ?></span>
                             </div>
                             <span class="fw-bold text-danger text-end" style="font-size: 0.9rem;">Rp. <?php echo number_format($item->total_price); ?></span>
                         </div>

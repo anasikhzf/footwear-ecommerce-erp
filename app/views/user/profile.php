@@ -22,7 +22,7 @@
         <form action="<?php echo BASE_URL; ?>user/profile" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label fw-medium">Full Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($user->user_nama); ?>" required>
+                <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($user->name); ?>" required>
             </div>
             <div class="mb-3">
                 <label for="username" class="form-label fw-medium">Username</label>
@@ -30,7 +30,7 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label fw-medium">Email Address</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user->user_email); ?>" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo htmlspecialchars($user->email); ?>" required>
             </div>
             <div class="mb-4">
                 <label for="password" class="form-label fw-medium">New Password <span class="text-muted small fw-normal">(Leave blank to keep current)</span></label>

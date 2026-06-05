@@ -159,6 +159,64 @@
                 padding: 8px 12px;
             }
         }
+        
+        @media (max-width: 767.98px) {
+            body {
+                font-size: 11px !important;
+            }
+            h1, .display-3 {
+                font-size: 1.6rem !important;
+            }
+            h2, h3 {
+                font-size: 1.2rem !important;
+            }
+            h4 {
+                font-size: 1.0rem !important;
+            }
+            h5 {
+                font-size: 0.9rem !important;
+            }
+            .card-body {
+                padding: 0.4rem !important;
+            }
+            .card-title {
+                font-size: 0.75rem !important;
+                line-height: 1.2 !important;
+            }
+            .text-muted, p, span, li, a {
+                font-size: 0.75rem !important;
+            }
+            .container {
+                padding-left: 6px !important;
+                padding-right: 6px !important;
+            }
+            .row {
+                margin-left: -3px !important;
+                margin-right: -3px !important;
+                --bs-gutter-x: 6px !important;
+                --bs-gutter-y: 6px !important;
+            }
+            .col-lg-3, .col-md-4, .col-sm-6, .col-sm-4, .col-6, .col-4, .col-12 {
+                padding-left: 3px !important;
+                padding-right: 3px !important;
+            }
+            /* Override to display card columns in exactly 3 columns (width: 33.333%) on mobile */
+            .col-sm-6, .col-sm-4, .col-lg-3, .col-lg-4, .col-md-4 {
+                flex: 0 0 auto !important;
+                width: 33.33333333% !important;
+            }
+            .btn {
+                padding: 0.25rem 0.5rem !important;
+                font-size: 10px !important;
+            }
+            .badge {
+                font-size: 9px !important;
+                padding: 0.2rem 0.4rem !important;
+            }
+            .card-img-top {
+                height: 100px !important;
+            }
+        }
     </style>
     <script>
         // Immediately apply saved theme to avoid flickering

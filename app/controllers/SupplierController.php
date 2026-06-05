@@ -30,7 +30,7 @@ class SupplierController extends Controller {
         $unpaidCount = 0;
 
         foreach ($allBills as $bill) {
-            if ($bill->status_pembayaran === 'sudah dibayar') {
+            if ($bill->payment_status === 'paid') {
                 $totalPaid += $bill->total_cost;
                 $paidCount++;
             } else {
@@ -89,16 +89,16 @@ class SupplierController extends Controller {
                 'name' => trim($_POST['name']),
                 'username' => trim($_POST['username']),
                 'email' => trim($_POST['email']),
-                'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->user_password
+                'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->password
             ];
 
             if ($this->userModel->updateUser($data)) {
-                $_SESSION['user_nama'] = $data['name'];
+                $_SESSION['name'] = $data['name'];
                 $_SESSION['username'] = $data['username'];
-                $_SESSION['a_global']->user_nama = $data['name'];
+                $_SESSION['a_global']->name = $data['name'];
                 $_SESSION['a_global']->username = $data['username'];
-                $_SESSION['a_global']->user_email = $data['email'];
-                $_SESSION['a_global']->user_password = $data['password'];
+                $_SESSION['a_global']->email = $data['email'];
+                $_SESSION['a_global']->password = $data['password'];
 
                 $_SESSION['success'] = "Profile updated successfully!";
                 $this->redirect('supplier/profile');

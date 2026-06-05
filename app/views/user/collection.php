@@ -16,8 +16,8 @@
                             <span>All Categories</span>
                         </a>
                         <?php foreach ($categories as $cat): ?>
-                            <a href="<?php echo BASE_URL; ?>user/collection?category_id=<?php echo $cat->kategori_id; ?>&search_query=<?php echo urlencode($search_query); ?>" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center <?php echo ($category_id == $cat->kategori_id) ? 'active fw-bold text-dark' : 'text-muted'; ?>" style="background: none;">
-                                <span><?php echo $cat->kategori_nama; ?></span>
+                            <a href="<?php echo BASE_URL; ?>user/collection?category_id=<?php echo $cat->category_id; ?>&search_query=<?php echo urlencode($search_query); ?>" class="list-group-item list-group-item-action border-0 px-0 d-flex justify-content-between align-items-center <?php echo ($category_id == $cat->category_id) ? 'active fw-bold text-dark' : 'text-muted'; ?>" style="background: none;">
+                                <span><?php echo $cat->category_name; ?></span>
                             </a>
                         <?php endforeach; ?>
                     </div>
@@ -55,16 +55,16 @@
                     <?php foreach ($products as $p): ?>
                         <div class="col-lg-4 col-sm-6">
                             <div class="card h-100 shadow-sm border-0" style="border-radius: 12px; overflow: hidden;">
-                                <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->sepatu_gambar; ?>" class="card-img-top object-fit-cover" alt="<?php echo $p->sepatu_nama; ?>" style="height: 220px;">
+                                <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->product_image; ?>" class="card-img-top object-fit-cover" alt="<?php echo $p->product_name; ?>" style="height: 220px;">
                                 <div class="card-body d-flex flex-column justify-content-between">
                                     <div>
-                                        <span class="text-muted small uppercase"><?php echo $p->kategori_nama; ?></span>
-                                        <h5 class="card-title fw-bold mt-1 mb-2"><?php echo $p->sepatu_nama; ?></h5>
+                                        <span class="text-muted small uppercase"><?php echo $p->category_name; ?></span>
+                                        <h5 class="card-title fw-bold mt-1 mb-2"><?php echo $p->product_name; ?></h5>
                                     </div>
                                     <div>
                                         <div class="d-flex justify-content-between align-items-center mt-3">
-                                            <h6 class="text-danger fw-bold mb-0">Rp. <?php echo number_format($p->sepatu_harga); ?></h6>
-                                            <a href="<?php echo BASE_URL; ?>user/detail/<?php echo $p->sepatu_id; ?>" class="btn btn-sm btn-dark px-3 rounded-pill" style="background-color: var(--accent-color); border-color: var(--accent-color);">Details</a>
+                                            <h6 class="text-danger fw-bold mb-0">Rp. <?php echo number_format($p->product_price); ?></h6>
+                                            <a href="<?php echo BASE_URL; ?>user/detail/<?php echo $p->product_id; ?>" class="btn btn-sm btn-dark px-3 rounded-pill" style="background-color: var(--accent-color); border-color: var(--accent-color);">Details</a>
                                         </div>
                                     </div>
                                 </div>

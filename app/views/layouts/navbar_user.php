@@ -66,7 +66,7 @@
                     <!-- Profile Dropdown -->
                     <div class="dropdown">
                         <button class="btn btn-dark btn-sm dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: var(--accent-color); border-color: var(--accent-color);">
-                            <i class="fa-solid fa-user me-1"></i> <?php echo htmlspecialchars($_SESSION['user_nama']); ?>
+                            <i class="fa-solid fa-user me-1"></i> <?php echo htmlspecialchars($_SESSION['name']); ?>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                             <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>user/profile"><i class="fa-solid fa-user-circle me-2"></i> Profile</a></li>

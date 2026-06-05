@@ -48,14 +48,14 @@
                                 <tr class="border-bottom">
                                     <td class="ps-4 fw-medium"><?php echo $no++; ?></td>
                                     <td>
-                                        <img src="<?php echo BASE_URL; ?>assets/kategori/<?php echo $cat->kategori_gambar; ?>" alt="<?php echo $cat->kategori_nama; ?>" width="60" height="60" class="rounded object-fit-cover shadow-sm">
+                                        <img src="<?php echo BASE_URL; ?>assets/kategori/<?php echo $cat->category_image; ?>" alt="<?php echo $cat->category_name; ?>" width="60" height="60" class="rounded object-fit-cover shadow-sm">
                                     </td>
-                                    <td class="fw-semibold"><?php echo htmlspecialchars($cat->kategori_nama); ?></td>
+                                    <td class="fw-semibold"><?php echo htmlspecialchars($cat->category_name); ?></td>
                                     <td class="text-end pe-4">
-                                        <button class="btn btn-sm btn-outline-primary me-2 edit-btn" data-id="<?php echo $cat->kategori_id; ?>" data-name="<?php echo htmlspecialchars($cat->kategori_nama); ?>" data-bs-toggle="modal" data-bs-target="#editCategoryModal">
+                                        <button class="btn btn-sm btn-outline-primary me-2 edit-btn" data-id="<?php echo $cat->category_id; ?>" data-name="<?php echo htmlspecialchars($cat->category_name); ?>" data-bs-toggle="modal" data-bs-target="#editCategoryModal">
                                             <i class="fa-solid fa-pen"></i> Edit
                                         </button>
-                                        <button class="btn btn-sm btn-outline-danger delete-btn" data-id="<?php echo $cat->kategori_id; ?>" data-name="<?php echo htmlspecialchars($cat->kategori_nama); ?>" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal">
+                                        <button class="btn btn-sm btn-outline-danger delete-btn" data-id="<?php echo $cat->category_id; ?>" data-name="<?php echo htmlspecialchars($cat->category_name); ?>" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal">
                                             <i class="fa-solid fa-trash"></i> Delete
                                         </button>
                                     </td>

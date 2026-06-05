@@ -26,7 +26,7 @@ class AuthController extends Controller {
                 $_SESSION['user_id'] = $user->user_id;
                 $_SESSION['username'] = $user->username;
                 $_SESSION['role'] = $user->role;
-                $_SESSION['user_nama'] = $user->user_nama;
+                $_SESSION['name'] = $user->name;
                 $_SESSION['a_global'] = $user;
                 $_SESSION['login'] = "You have successfully logged in!";
 

@@ -22,14 +22,14 @@
             
             <div class="mb-3">
                 <span class="text-muted d-block small">Phone Number:</span>
-                <span class="fw-medium"><?php echo htmlspecialchars($order->tlp_number); ?></span>
+                <span class="fw-medium"><?php echo htmlspecialchars($order->phone_number); ?></span>
             </div>
 
             <div class="border-top pt-3 mt-3">
                 <span class="text-muted mb-2 d-block small">Items Ordered:</span>
                 <?php foreach ($items as $item): ?>
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="small"><?php echo htmlspecialchars($item->sepatu_nama); ?> (Size: <?php echo $item->ukuran; ?>) x <?php echo $item->quantity; ?></span>
+                        <span class="small"><?php echo htmlspecialchars($item->product_name); ?> (Size: <?php echo $item->size_value; ?>) x <?php echo $item->quantity; ?></span>
                         <span class="fw-bold text-danger small">Rp. <?php echo number_format($item->product_price * $item->quantity); ?></span>
                     </div>
                 <?php endforeach; ?>

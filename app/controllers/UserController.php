@@ -61,8 +61,8 @@ class UserController extends Controller {
                 $sizes = $this->productModel->getProductSizes($productId);
                 $availableStock = 0;
                 foreach ($sizes as $s) {
-                    if ($s->ukuran_id == $sizeId) {
-                        $availableStock = $s->stok;
+                    if ($s->size_id == $sizeId) {
+                        $availableStock = $s->stock;
                         break;
                     }
                 }
@@ -73,17 +73,17 @@ class UserController extends Controller {
                 }
 
                 if (isset($_SESSION['user_id'])) {
-                    $this->cartModel->addToCart($_SESSION['user_id'], $productId, $sizeId, $quantity, $product->sepatu_harga);
+                    $this->cartModel->addToCart($_SESSION['user_id'], $productId, $sizeId, $quantity, $product->product_price);
                 } else {
                     // Temporarily store in session so redirect target (cart) can read and save to localStorage
                     $_SESSION['guest_cart_add'] = [
                         'productId' => $productId,
                         'sizeId' => $sizeId,
                         'quantity' => $quantity,
-                        'name' => $product->sepatu_nama,
-                        'image' => $product->sepatu_gambar,
-                        'size' => $sizes[array_search($sizeId, array_column($sizes, 'ukuran_id'))]->ukuran,
-                        'price' => floatval($product->sepatu_harga)
+                        'name' => $product->product_name,
+                        'image' => $product->product_image,
+                        'size' => $sizes[array_search($sizeId, array_column($sizes, 'size_id'))]->size_value,
+                        'price' => floatval($product->product_price)
                     ];
                 }
                 $_SESSION['success'] = "Added to cart successfully!";
@@ -215,17 +215,17 @@ class UserController extends Controller {
                 'name' => trim($_POST['name']),
                 'username' => trim($_POST['username']),
                 'email' => trim($_POST['email']),
-                'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->user_password
+                'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->password
             ];
 
             if ($this->userModel->updateUser($data)) {
                 // Update session globals
-                $_SESSION['user_nama'] = $data['name'];
+                $_SESSION['name'] = $data['name'];
                 $_SESSION['username'] = $data['username'];
-                $_SESSION['a_global']->user_nama = $data['name'];
+                $_SESSION['a_global']->name = $data['name'];
                 $_SESSION['a_global']->username = $data['username'];
-                $_SESSION['a_global']->user_email = $data['email'];
-                $_SESSION['a_global']->user_password = $data['password'];
+                $_SESSION['a_global']->email = $data['email'];
+                $_SESSION['a_global']->password = $data['password'];
 
                 $_SESSION['success'] = "Profile updated successfully!";
                 $this->redirect('user/profile');

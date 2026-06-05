@@ -49,9 +49,9 @@
                             ?>
                             <tr>
                                 <td class="ps-4 fw-semibold"><?php echo $no++; ?></td>
-                                <td><?php echo htmlspecialchars($u->user_nama); ?></td>
+                                <td><?php echo htmlspecialchars($u->name); ?></td>
                                 <td><?php echo htmlspecialchars($u->username); ?></td>
-                                <td><?php echo htmlspecialchars($u->user_email); ?></td>
+                                <td><?php echo htmlspecialchars($u->email); ?></td>
                                 <td>
                                     <?php if ($u->role === 'admin'): ?>
                                         <span class="badge bg-danger">Admin</span>
@@ -66,9 +66,9 @@
                                             data-bs-toggle="modal" 
                                             data-bs-target="#editUserModal" 
                                             data-id="<?php echo $u->user_id; ?>" 
-                                            data-name="<?php echo htmlspecialchars($u->user_nama); ?>" 
+                                            data-name="<?php echo htmlspecialchars($u->name); ?>" 
                                             data-username="<?php echo htmlspecialchars($u->username); ?>" 
-                                            data-email="<?php echo htmlspecialchars($u->user_email); ?>">
+                                            data-email="<?php echo htmlspecialchars($u->email); ?>">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
                                     <?php if ($u->user_id !== $_SESSION['user_id']): ?>
@@ -76,7 +76,7 @@
                                                 data-bs-toggle="modal" 
                                                 data-bs-target="#deleteUserModal" 
                                                 data-id="<?php echo $u->user_id; ?>" 
-                                                data-name="<?php echo htmlspecialchars($u->user_nama); ?>">
+                                                data-name="<?php echo htmlspecialchars($u->name); ?>">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     <?php endif; ?>

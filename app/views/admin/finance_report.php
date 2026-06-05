@@ -81,12 +81,12 @@
                                     <tr class="border-bottom">
                                         <td class="ps-3 py-2 fw-bold">#<?php echo $p->transaction_id; ?></td>
                                         <td class="py-2">
-                                            <span class="badge <?php echo ($p->status_pembayaran === 'sudah dibayar') ? 'bg-success' : 'bg-warning text-dark'; ?>">
-                                                <?php echo ucwords($p->status_pembayaran); ?>
+                                            <span class="badge <?php echo ($p->payment_status === 'paid') ? 'bg-success' : 'bg-warning text-dark'; ?>">
+                                                <?php echo ucwords($p->payment_status); ?>
                                             </span>
                                         </td>
                                         <td class="py-2 text-end text-danger fw-bold pe-3">
-                                            <?php if ($p->status_pembayaran === 'sudah dibayar'): ?>
+                                            <?php if ($p->payment_status === 'paid'): ?>
                                                 Rp. <?php echo number_format($p->total_cost); ?>
                                             <?php else: ?>
                                                 -

@@ -44,13 +44,13 @@
                                 <tr class="border-bottom">
                                     <td class="ps-4 fw-medium"><?php echo $no++; ?></td>
                                     <td>
-                                        <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->sepatu_gambar; ?>" alt="<?php echo $p->sepatu_nama; ?>" width="60" height="60" class="rounded object-fit-cover shadow-sm">
+                                        <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->product_image; ?>" alt="<?php echo $p->product_name; ?>" width="60" height="60" class="rounded object-fit-cover shadow-sm">
                                     </td>
-                                    <td class="fw-semibold"><?php echo htmlspecialchars($p->sepatu_nama); ?></td>
-                                    <td><span class="badge bg-secondary"><?php echo htmlspecialchars($p->kategori_nama); ?></span></td>
-                                    <td class="fw-bold text-danger">Rp. <?php echo number_format($p->sepatu_harga); ?></td>
+                                    <td class="fw-semibold"><?php echo htmlspecialchars($p->product_name); ?></td>
+                                    <td><span class="badge bg-secondary"><?php echo htmlspecialchars($p->category_name); ?></span></td>
+                                    <td class="fw-bold text-danger">Rp. <?php echo number_format($p->product_price); ?></td>
                                     <td>
-                                        <?php if ($p->sepatu_status == 1): ?>
+                                        <?php if ($p->product_status == 1): ?>
                                             <span class="badge bg-success">Active</span>
                                         <?php else: ?>
                                             <span class="badge bg-danger">Inactive</span>
@@ -58,16 +58,16 @@
                                     </td>
                                     <td class="text-end pe-4">
                                         <button class="btn btn-sm btn-outline-primary me-2 edit-btn" 
-                                                data-id="<?php echo $p->sepatu_id; ?>" 
-                                                data-name="<?php echo htmlspecialchars($p->sepatu_nama); ?>" 
-                                                data-category="<?php echo $p->kategori_id; ?>" 
-                                                data-price="<?php echo $p->sepatu_harga; ?>" 
-                                                data-desc="<?php echo htmlspecialchars($p->sepatu_deskripsi); ?>" 
-                                                data-status="<?php echo $p->sepatu_status; ?>" 
+                                                data-id="<?php echo $p->product_id; ?>" 
+                                                data-name="<?php echo htmlspecialchars($p->product_name); ?>" 
+                                                data-category="<?php echo $p->category_id; ?>" 
+                                                data-price="<?php echo $p->product_price; ?>" 
+                                                data-desc="<?php echo htmlspecialchars($p->product_description); ?>" 
+                                                data-status="<?php echo $p->product_status; ?>" 
                                                 data-bs-toggle="modal" data-bs-target="#editProductModal">
                                             <i class="fa-solid fa-pen"></i> Edit
                                         </button>
-                                        <button class="btn btn-sm btn-outline-danger delete-btn" data-id="<?php echo $p->sepatu_id; ?>" data-name="<?php echo htmlspecialchars($p->sepatu_nama); ?>" data-bs-toggle="modal" data-bs-target="#deleteProductModal">
+                                        <button class="btn btn-sm btn-outline-danger delete-btn" data-id="<?php echo $p->product_id; ?>" data-name="<?php echo htmlspecialchars($p->product_name); ?>" data-bs-toggle="modal" data-bs-target="#deleteProductModal">
                                             <i class="fa-solid fa-trash"></i> Delete
                                         </button>
                                     </td>
@@ -102,7 +102,7 @@
                             <select class="form-select border" id="add_category_id" name="category_id" required>
                                 <option value="" disabled selected>Select Category</option>
                                 <?php foreach ($categories as $cat): ?>
-                                    <option value="<?php echo $cat->kategori_id; ?>"><?php echo htmlspecialchars($cat->kategori_nama); ?></option>
+                                    <option value="<?php echo $cat->category_id; ?>"><?php echo htmlspecialchars($cat->category_name); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -157,7 +157,7 @@
                             <label for="edit_category_id" class="form-label fw-semibold">Category</label>
                             <select class="form-select border" id="edit_category_id" name="category_id" required>
                                 <?php foreach ($categories as $cat): ?>
-                                    <option value="<?php echo $cat->kategori_id; ?>"><?php echo htmlspecialchars($cat->kategori_nama); ?></option>
+                                    <option value="<?php echo $cat->category_id; ?>"><?php echo htmlspecialchars($cat->category_name); ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

@@ -33,12 +33,12 @@
                         <tbody>
                             <?php 
                             $no = 1;
-                            $productModel = new \App\ProductModel(); // Or use dynamic size loading
+                            $productModel = new \App\Models\ProductModel(); // Or use dynamic size loading
                             foreach ($products as $p): 
                                 // Get sizes list dynamically inside view or instantiate db helper
                                 $db = new \App\Core\Database();
-                                $db->query("SELECT us.stok, u.ukuran FROM ukuran_sepatu us JOIN ukuran u ON us.ukuran_id = u.ukuran_id WHERE us.sepatu_id = :pid ORDER BY u.ukuran ASC");
-                                $db->bind(':pid', $p->sepatu_id);
+                                $db->query("SELECT us.stock, u.size_value FROM product_sizes us JOIN sizes u ON us.size_id = u.size_id WHERE us.product_id = :pid ORDER BY u.size_value ASC");
+                                $db->bind(':pid', $p->product_id);
                                 $sizes = $db->resultSet();
                                 
                                 $totalStock = 0;
@@ -46,17 +46,17 @@
                                 <tr class="border-bottom">
                                     <td class="ps-4 fw-medium"><?php echo $no++; ?></td>
                                     <td>
-                                        <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->sepatu_gambar; ?>" alt="<?php echo $p->sepatu_nama; ?>" width="60" height="60" class="rounded object-fit-cover shadow-sm">
+                                        <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->product_image; ?>" alt="<?php echo $p->product_name; ?>" width="60" height="60" class="rounded object-fit-cover shadow-sm">
                                     </td>
-                                    <td class="fw-semibold"><?php echo htmlspecialchars($p->sepatu_nama); ?></td>
+                                    <td class="fw-semibold"><?php echo htmlspecialchars($p->product_name); ?></td>
                                     <td>
                                         <div class="d-flex flex-wrap gap-2">
                                             <?php foreach ($sizes as $s): 
-                                                $totalStock += $s->stok;
-                                                $bgClass = ($s->stok <= 0) ? 'bg-danger' : (($s->stok < 5) ? 'bg-warning text-dark' : 'bg-success');
+                                                $totalStock += $s->stock;
+                                                $bgClass = ($s->stock <= 0) ? 'bg-danger' : (($s->stock < 5) ? 'bg-warning text-dark' : 'bg-success');
                                             ?>
                                                 <span class="badge <?php echo $bgClass; ?>" style="font-size: 0.8rem;">
-                                                    Size <?php echo $s->ukuran; ?>: <strong><?php echo $s->stok; ?></strong>
+                                                    Size <?php echo $s->size_value; ?>: <strong><?php echo $s->stock; ?></strong>
                                                 </span>
                                             <?php endforeach; ?>
                                         </div>
@@ -65,7 +65,7 @@
                                         <?php echo $totalStock; ?>
                                     </td>
                                     <td class="text-end pe-4">
-                                        <a href="<?php echo BASE_URL; ?>admin/request_stock/<?php echo $p->sepatu_id; ?>" class="btn btn-sm btn-dark" style="background-color: var(--accent-color); border-color: var(--accent-color);">
+                                        <a href="<?php echo BASE_URL; ?>admin/request_stock/<?php echo $p->product_id; ?>" class="btn btn-sm btn-dark" style="background-color: var(--accent-color); border-color: var(--accent-color);">
                                             <i class="fa-solid fa-truck-ramp-box me-1"></i> Request Stock
                                         </a>
                                     </td>

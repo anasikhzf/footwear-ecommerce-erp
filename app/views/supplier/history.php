@@ -41,10 +41,10 @@
                                     <tr class="border-bottom">
                                         <td class="ps-4 fw-medium"><?php echo $no++; ?></td>
                                         <td>
-                                            <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $req->sepatu_gambar; ?>" alt="shoe" width="55" height="55" class="rounded object-fit-cover shadow-sm">
+                                            <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $req->product_image; ?>" alt="shoe" width="55" height="55" class="rounded object-fit-cover shadow-sm">
                                         </td>
-                                        <td class="fw-semibold"><?php echo htmlspecialchars($req->sepatu_nama); ?></td>
-                                        <td class="text-center fw-medium"><?php echo $req->ukuran; ?></td>
+                                        <td class="fw-semibold"><?php echo htmlspecialchars($req->product_name); ?></td>
+                                        <td class="text-center fw-medium"><?php echo $req->size_value; ?></td>
                                         <td class="text-center"><?php echo $req->quantity; ?> pairs</td>
                                         <td class="text-center">
                                             <span class="badge bg-success"><i class="fa-solid fa-circle-check me-1"></i> Completed</span>

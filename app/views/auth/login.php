@@ -54,6 +54,9 @@
 
         <div class="text-center mt-3">
             <p class="small text-muted mb-0">Don't have an account? <a href="<?php echo BASE_URL; ?>auth/register" class="fw-bold text-decoration-none" style="color: var(--accent-color);">Sign Up</a></p>
+            <div class="mt-3">
+                <a href="<?php echo BASE_URL; ?>" class="small text-decoration-none text-muted"><i class="fa-solid fa-arrow-left me-1"></i> Back to Homepage</a>
+            </div>
         </div>
     </div>
 </div>

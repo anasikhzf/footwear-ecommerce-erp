@@ -37,9 +37,9 @@ class AdminController extends Controller {
         // Calculate total stock
         $totalStock = 0;
         foreach ($products as $product) {
-            $sizes = $this->productModel->getProductSizes($product->sepatu_id);
+            $sizes = $this->productModel->getProductSizes($product->product_id);
             foreach ($sizes as $size) {
-                $totalStock += $size->stok;
+                $totalStock += $size->stock;
             }
         }
 
@@ -49,7 +49,7 @@ class AdminController extends Controller {
         $bills = $this->requestModel->getAllBills();
         $totalUnpaidBillsAmount = 0;
         foreach ($bills as $bill) {
-            if ($bill->status_pembayaran === 'belum dibayar') {
+            if ($bill->payment_status === 'unpaid') {
                 $totalUnpaidBillsAmount += $bill->total_cost;
             }
         }
@@ -116,8 +116,8 @@ class AdminController extends Controller {
                         $imageName = $newFileName;
                         // Delete old image
                         $oldCategory = $this->categoryModel->getCategoryById($id);
-                        if ($oldCategory && file_exists($uploadFileDir . $oldCategory->kategori_gambar)) {
-                            unlink($uploadFileDir . $oldCategory->kategori_gambar);
+                        if ($oldCategory && file_exists($uploadFileDir . $oldCategory->category_image)) {
+                            unlink($uploadFileDir . $oldCategory->category_image);
                         }
                     }
                 }
@@ -130,8 +130,8 @@ class AdminController extends Controller {
                 $category = $this->categoryModel->getCategoryById($id);
                 if ($category) {
                     $uploadFileDir = __DIR__ . '/../../public/assets/kategori/';
-                    if (file_exists($uploadFileDir . $category->kategori_gambar)) {
-                        unlink($uploadFileDir . $category->kategori_gambar);
+                    if (file_exists($uploadFileDir . $category->category_image)) {
+                        unlink($uploadFileDir . $category->category_image);
                     }
                     $this->categoryModel->deleteCategory($id);
                     $_SESSION['success'] = "Category deleted successfully!";
@@ -207,8 +207,8 @@ class AdminController extends Controller {
                         $imageName = $newFileName;
                         // Delete old image
                         $oldProduct = $this->productModel->getProductById($id);
-                        if ($oldProduct && file_exists($uploadFileDir . $oldProduct->sepatu_gambar)) {
-                            unlink($uploadFileDir . $oldProduct->sepatu_gambar);
+                        if ($oldProduct && file_exists($uploadFileDir . $oldProduct->product_image)) {
+                            unlink($uploadFileDir . $oldProduct->product_image);
                         }
                     }
                 }
@@ -228,8 +228,8 @@ class AdminController extends Controller {
                 $product = $this->productModel->getProductById($id);
                 if ($product) {
                     $uploadFileDir = __DIR__ . '/../../public/assets/produk/';
-                    if (file_exists($uploadFileDir . $product->sepatu_gambar)) {
-                        unlink($uploadFileDir . $product->sepatu_gambar);
+                    if (file_exists($uploadFileDir . $product->product_image)) {
+                        unlink($uploadFileDir . $product->product_image);
                     }
                     $this->productModel->deleteProduct($id);
                     $_SESSION['success'] = "Product deleted successfully!";
@@ -256,7 +256,7 @@ class AdminController extends Controller {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $sizes = $_POST['ukuran'] ?? [];
+            $sizes = $_POST['size_value'] ?? [];
             if ($this->requestModel->createRequest($id, $sizes)) {
                 $_SESSION['success'] = "Stock request submitted to supplier successfully!";
                 $this->redirect('admin/stock');
@@ -298,7 +298,7 @@ class AdminController extends Controller {
                     'name' => trim($_POST['name']),
                     'username' => trim($_POST['username']),
                     'email' => trim($_POST['email']),
-                    'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->user_password
+                    'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->password
                 ];
                 $this->userModel->updateUser($data);
                 $_SESSION['success'] = "User updated successfully!";
@@ -361,16 +361,16 @@ class AdminController extends Controller {
                 'name' => trim($_POST['name']),
                 'username' => trim($_POST['username']),
                 'email' => trim($_POST['email']),
-                'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->user_password
+                'password' => !empty($_POST['password']) ? trim($_POST['password']) : $user->password
             ];
 
             if ($this->userModel->updateUser($data)) {
-                $_SESSION['user_nama'] = $data['name'];
+                $_SESSION['name'] = $data['name'];
                 $_SESSION['username'] = $data['username'];
-                $_SESSION['a_global']->user_nama = $data['name'];
+                $_SESSION['a_global']->name = $data['name'];
                 $_SESSION['a_global']->username = $data['username'];
-                $_SESSION['a_global']->user_email = $data['email'];
-                $_SESSION['a_global']->user_password = $data['password'];
+                $_SESSION['a_global']->email = $data['email'];
+                $_SESSION['a_global']->password = $data['password'];
 
                 $_SESSION['success'] = "Profile updated successfully!";
                 $this->redirect('admin/profile');

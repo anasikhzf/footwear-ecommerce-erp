@@ -68,14 +68,14 @@
                                             <tr class="border-bottom">
                                                 <td class="py-3">
                                                     <div class="d-flex align-items-center">
-                                                        <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $item->sepatu_gambar; ?>" alt="<?php echo $item->sepatu_nama; ?>" width="65" height="65" class="rounded me-3 object-fit-cover shadow-sm">
+                                                        <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $item->product_image; ?>" alt="<?php echo $item->product_name; ?>" width="65" height="65" class="rounded me-3 object-fit-cover shadow-sm">
                                                         <div>
-                                                            <h6 class="fw-bold mb-1"><?php echo htmlspecialchars($item->sepatu_nama); ?></h6>
+                                                            <h6 class="fw-bold mb-1"><?php echo htmlspecialchars($item->product_name); ?></h6>
                                                             <span class="text-muted small">Unit Price: Rp. <?php echo number_format($item->unit_price); ?></span>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="text-center py-3 fw-medium"><?php echo $item->ukuran; ?></td>
+                                                <td class="text-center py-3 fw-medium"><?php echo $item->size_value; ?></td>
                                                 <td class="py-3">
                                                     <!-- Update Qty form -->
                                                     <form action="<?php echo BASE_URL; ?>user/cart" method="POST" class="d-flex justify-content-center">

@@ -25,12 +25,12 @@
         <?php foreach ($categories as $cat): ?>
             <div class="col-md-4 col-sm-6">
                 <div class="card h-100 shadow-sm border-0 position-relative overflow-hidden group-hover" style="border-radius: 12px;">
-                    <img src="<?php echo BASE_URL; ?>assets/kategori/<?php echo $cat->kategori_gambar; ?>" class="card-img-top object-fit-cover" alt="<?php echo $cat->kategori_nama; ?>" style="height: 250px; filter: brightness(0.8);">
+                    <img src="<?php echo BASE_URL; ?>assets/kategori/<?php echo $cat->category_image; ?>" class="card-img-top object-fit-cover" alt="<?php echo $cat->category_name; ?>" style="height: 250px; filter: brightness(0.8);">
                     <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white d-flex justify-content-between align-items-center bg-gradient-dark">
                         <div>
-                            <h4 class="fw-bold mb-0"><?php echo $cat->kategori_nama; ?></h4>
+                            <h4 class="fw-bold mb-0"><?php echo $cat->category_name; ?></h4>
                         </div>
-                        <a href="<?php echo BASE_URL; ?>user/collection?category_id=<?php echo $cat->kategori_id; ?>" class="btn btn-light btn-sm rounded-circle"><i class="fa-solid fa-chevron-right text-dark"></i></a>
+                        <a href="<?php echo BASE_URL; ?>user/collection?category_id=<?php echo $cat->category_id; ?>" class="btn btn-light btn-sm rounded-circle"><i class="fa-solid fa-chevron-right text-dark"></i></a>
                     </div>
                 </div>
             </div>
@@ -57,16 +57,16 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="card h-100 shadow-sm border-0 position-relative" style="border-radius: 12px; overflow: hidden;">
                     <span class="position-absolute top-0 end-0 bg-success text-white px-3 py-1 m-3 small rounded-pill fw-semibold">New</span>
-                    <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->sepatu_gambar; ?>" class="card-img-top object-fit-cover" alt="<?php echo $p->sepatu_nama; ?>" style="height: 240px;">
+                    <img src="<?php echo BASE_URL; ?>assets/produk/<?php echo $p->product_image; ?>" class="card-img-top object-fit-cover" alt="<?php echo $p->product_name; ?>" style="height: 240px;">
                     <div class="card-body d-flex flex-column justify-content-between">
                         <div>
-                            <span class="text-muted small uppercase"><?php echo $p->kategori_nama; ?></span>
-                            <h5 class="card-title fw-bold mt-1 mb-2"><?php echo $p->sepatu_nama; ?></h5>
+                            <span class="text-muted small uppercase"><?php echo $p->category_name; ?></span>
+                            <h5 class="card-title fw-bold mt-1 mb-2"><?php echo $p->product_name; ?></h5>
                         </div>
                         <div>
                             <div class="d-flex justify-content-between align-items-center mt-3">
-                                <h6 class="text-danger fw-bold mb-0">Rp. <?php echo number_format($p->sepatu_harga); ?></h6>
-                                <a href="<?php echo BASE_URL; ?>user/detail/<?php echo $p->sepatu_id; ?>" class="btn btn-sm btn-dark px-3 rounded-pill" style="background-color: var(--accent-color); border-color: var(--accent-color);">Details</a>
+                                <h6 class="text-danger fw-bold mb-0">Rp. <?php echo number_format($p->product_price); ?></h6>
+                                <a href="<?php echo BASE_URL; ?>user/detail/<?php echo $p->product_id; ?>" class="btn btn-sm btn-dark px-3 rounded-pill" style="background-color: var(--accent-color); border-color: var(--accent-color);">Details</a>
                             </div>
                         </div>
                     </div>

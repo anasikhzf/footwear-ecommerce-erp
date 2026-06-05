@@ -10,7 +10,7 @@
         <div class="card p-3 shadow-sm border-0 mb-4 d-flex flex-row justify-content-between align-items-center" style="border-radius: 12px;">
             <div>
                 <span class="text-muted small">Welcome Back, Partner</span>
-                <h5 class="fw-bold mb-0 text-capitalize"><?php echo htmlspecialchars($_SESSION['user_nama']); ?></h5>
+                <h5 class="fw-bold mb-0 text-capitalize"><?php echo htmlspecialchars($_SESSION['name']); ?></h5>
             </div>
             <div class="text-muted small"><i class="fa-solid fa-calendar-days me-2"></i> <?php echo date('l, d F Y'); ?></div>
         </div>

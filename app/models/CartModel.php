@@ -11,9 +11,9 @@ class CartModel {
     }
 
     public function getCartByUser($userId) {
-        $this->db->query("SELECT c.*, s.sepatu_nama, s.sepatu_gambar, u.ukuran FROM cart c 
-                          JOIN sepatu s ON c.sepatu_id = s.sepatu_id 
-                          JOIN ukuran u ON c.ukuran_id = u.ukuran_id 
+        $this->db->query("SELECT c.*, s.product_name, s.product_image, u.size_value FROM cart c 
+                          JOIN products s ON c.product_id = s.product_id 
+                          JOIN sizes u ON c.size_id = u.size_id 
                           WHERE c.user_id = :user_id 
                           ORDER BY c.cart_id DESC");
         $this->db->bind(':user_id', $userId);
@@ -21,7 +21,7 @@ class CartModel {
     }
 
     public function getCartItem($userId, $productId, $sizeId) {
-        $this->db->query("SELECT * FROM cart WHERE user_id = :user_id AND sepatu_id = :product_id AND ukuran_id = :size_id");
+        $this->db->query("SELECT * FROM cart WHERE user_id = :user_id AND product_id = :product_id AND size_id = :size_id");
         $this->db->bind(':user_id', $userId);
         $this->db->bind(':product_id', $productId);
         $this->db->bind(':size_id', $sizeId);
@@ -40,7 +40,7 @@ class CartModel {
             return $this->db->execute();
         } else {
             $total = $quantity * $price;
-            $this->db->query("INSERT INTO cart (user_id, sepatu_id, ukuran_id, quantity, unit_price, total_price) 
+            $this->db->query("INSERT INTO cart (user_id, product_id, size_id, quantity, unit_price, total_price) 
                               VALUES (:user_id, :product_id, :size_id, :quantity, :price, :total)");
             $this->db->bind(':user_id', $userId);
             $this->db->bind(':product_id', $productId);
