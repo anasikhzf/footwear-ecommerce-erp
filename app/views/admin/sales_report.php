@@ -1,0 +1,59 @@
+<?php include __DIR__ . '/../layouts/header.php'; ?>
+
+<div class="d-flex">
+    <!-- Sidebar -->
+    <?php include __DIR__ . '/../layouts/sidebar_admin.php'; ?>
+
+    <!-- Main Content -->
+    <div class="main-content flex-grow-1">
+        <h3 class="fw-bold mb-4">Sales Report</h3>
+
+        <!-- Sales Report Card -->
+        <div class="card shadow-sm border-0" style="border-radius: 12px;">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0 table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col" class="py-3 ps-4" style="width: 65px;">Order</th>
+                                <th scope="col" class="py-3">Customer</th>
+                                <th scope="col" class="py-3">Date</th>
+                                <th scope="col" class="py-3">Shoe</th>
+                                <th scope="col" class="py-3 text-center">Size</th>
+                                <th scope="col" class="py-3 text-center">Qty</th>
+                                <th scope="col" class="py-3 text-end">Price</th>
+                                <th scope="col" class="py-3 text-end pe-4">Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            $grandTotalRevenue = 0;
+                            foreach ($sales as $sale): 
+                                $grandTotalRevenue += $sale->total_revenue;
+                            ?>
+                                <tr class="border-bottom">
+                                    <td class="ps-4 fw-bold">#<?php echo $sale->order_id; ?></td>
+                                    <td class="fw-medium"><?php echo htmlspecialchars($sale->customer_name); ?></td>
+                                    <td class="small text-muted"><?php echo date('d M Y, H:i', strtotime($sale->order_date)); ?></td>
+                                    <td><?php echo htmlspecialchars($sale->product_name); ?></td>
+                                    <td class="text-center"><?php echo $sale->product_size; ?></td>
+                                    <td class="text-center fw-medium"><?php echo $sale->quantity; ?></td>
+                                    <td class="text-end">Rp. <?php echo number_format($sale->price); ?></td>
+                                    <td class="text-end fw-bold text-danger pe-4">Rp. <?php echo number_format($sale->total_revenue); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                        <tfoot class="bg-light">
+                            <tr class="fw-bold">
+                                <td colspan="7" class="text-end py-3 ps-4 fs-5">Grand Total Revenue:</td>
+                                <td class="text-end text-danger py-3 pe-4 fs-5">Rp. <?php echo number_format($grandTotalRevenue); ?></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include __DIR__ . '/../layouts/footer.php'; ?>

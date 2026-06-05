@@ -1,0 +1,248 @@
+body {
+    background-color: #f3f4f5 !important;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* content atas (semua file) */
+.content-atas {
+    margin-left: 280px;
+}
+
+.latar-belakang, .latar-belakang2{
+    position: relative;
+    margin: 0;
+    border-radius: 10px;
+    padding: 0;
+    justify-content: space-between;
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 5px 5px 5px rgb(43, 42, 42);
+}
+
+.latar-belakang{
+    height: 100px;
+    background: white;
+    width: 1248px;
+}
+
+.latar-belakang2{
+    background: linear-gradient(135deg, #141E46, #FF6969);
+    width: 1238px;
+}
+
+.box-page {
+    justify-content: flex-start;
+    padding: 40px 60px;
+}
+.box-user {
+    display: flex;
+    padding: 30px 50px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* semua file dan profil */
+.box-icon, .box-icon2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.icon, .icon2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* semua file - profil */
+.content-bawah {
+    margin: 30px 50px 50px 300px;
+    width: 78%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgb(43, 42, 42);
+}
+
+.box-icon {
+    background-color: #353e46;
+    width: 30px;
+    height: 30px;
+}
+
+.icon{
+    width: 16px;
+    height: 16px;
+}
+
+/* profil */
+.box-icon2 {
+    background-color: black;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.icon2{
+    width: 30px;
+    height: 30px;
+}
+
+.content-bawah2 {
+    margin: 30px 45px 20px 330px;
+    display: flex;
+}
+
+.box-content {
+    width: 50%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px rgb(43, 42, 42);
+}
+
+.latar-belakang2{
+    height: 200px;
+}
+
+.box1 {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: 1130px; 
+    box-shadow: 5px 5px 5px rgb(43, 42, 42);
+    border-radius: 10px;
+}
+
+.box2 {
+    display: flex;
+    padding: 10px 0 10px 20px;
+    align-items: center;
+}
+
+/* tabel */
+th,td {
+    border: 1px solid #6f7894 !important;
+    color: #6f7894 !important;
+}
+
+/* aksi */
+.box-container {
+    padding: 40px;
+    width: 100%;
+}
+
+.box-container-1 {
+    width:50%;
+    padding: 40px 20px 40px 40px;
+}
+
+.box-container-2 {
+    width:50%;
+    padding: 40px 40px 40px 20px;
+}
+
+/* inputan */
+.form-label{
+    color: #6f7894;
+}
+
+.form-control {
+    border: 1px solid #6f7894 !important;
+    color: #6f7894 !important;
+}
+
+/* request */
+.completed {
+    background-color: #43766C;
+    color: white;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 1px rgb(43, 42, 42);
+    border-radius: 5px;
+}
+
+.pending {
+    background-color: #535C91;
+    color: white;
+    padding: 5px 19px;
+    box-shadow: 1px 1px 1px rgb(43, 42, 42);
+    border-radius: 5px;
+}
+
+/* .content-bawah2 {
+    margin: 30px 50px 50px 320px;
+    width: 75%;
+    border-radius: 10px;
+} */
+
+/* kartu */
+.kartu {
+    width: 285px !important;
+    height: 170px !important;
+    margin-right: 25px !important;
+    display: flex !important;
+    background-color: white !important;
+    box-shadow: 2px 2px 2px rgb(89, 87, 87) !important;
+    border-radius: 10px !important;
+}
+
+.kartu-content1 {
+    padding: 15px 0 0 20px;
+    flex-grow: 1;
+}
+
+.kartu-content2 {
+    color: white;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.img-kartu{
+    width: 45px;
+}
+
+.kartu-content1 a, .kartu-content1b a{
+    text-decoration: none;
+    color: #6f7894;
+}
+
+.kartub {
+    width: 400px !important;
+    height: 170px !important;
+    margin-right: 25px !important;
+    display: flex !important;
+    background-color: white !important;
+    box-shadow: 2px 2px 2px rgb(89, 87, 87) !important;
+    border-radius: 10px !important;
+}
+
+.kartu-content1b {
+    padding: 15px 0 0 20px;
+    flex-grow: 1;
+}
+
+.kartu-content2b {
+    color: white;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.img-kartub{
+    width: 50px;
+}
