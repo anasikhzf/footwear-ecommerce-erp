@@ -1,42 +1,20 @@
 <?php
-// Start session if not already started
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
 }
 
-// Define Base URL dynamically
-$scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
-$baseUrl = str_replace('public/index.php', '', $scriptName);
-define('BASE_URL', $baseUrl);
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
 
-// Simple PSR-4 Autoloader
-spl_autoload_register(function ($class) {
-    // Project-specific namespace prefix
-    $prefix = 'App\\';
-    $base_dir = __DIR__ . '/../app/';
+// Bootstrap Laravel and handle the request...
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-    // Does the class use the namespace prefix?
-    $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) !== 0) {
-        // No, move to next registered autoloader
-        return;
-    }
-
-    // Get the relative class name
-    $relative_class = substr($class, $len);
-
-    // Replace the namespace prefix with the base directory, replace namespace
-    // separators with directory separators in the relative class name, append
-    // with .php
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
-
-    // If the file exists, require it
-    if (file_exists($file)) {
-        require_once $file;
-    }
-});
-
-// Initialize database helper to verify it doesn't fail
-use App\Core\App;
-
-$app = new App();
+$app->handleRequest(Request::capture());

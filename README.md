@@ -1,100 +1,83 @@
-# Malshoes - Premium Shoe Store Platform
+# Malshoes - Footwear Ecommerce & ERP (Laravel Edition)
 
-Malshoes is a clean, modern, and high-performance e-commerce and stock management application designed for premium footwear retailers. Built using a custom MVC architecture in Native PHP, the application facilitates seamless customer shopping experiences, robust admin operations (CRUD for products/categories, finance reporting, invoice clearance), and supplier inventory request fulfillment.
+Malshoes is a clean, modern, and high-performance e-commerce and ERP stock management platform designed for footwear retailers. Built with **Laravel 11**, the platform features customer shopping, real-time cart synchronization, admin catalog & financial ERP reports, and supplier inventory fulfillment.
 
 ---
 
-## Key Features
+## 🌟 Key Features
 
 ### 👤 Customer Portal (User)
-* **Explore Products**: Elegant home catalog with filter-by-category and search parameters.
-* **Product Detail**: Choose available shoe sizes with dynamic real-time stock limits.
-* **Shopping Cart**: Interactive cart with session-based local synchronization.
-* **Checkout & Billing**: Flat-rate shipping fee calculations and billing address tracking.
-* **Profile Settings**: Manage email, name, and login credentials.
+* **Interactive Catalog**: Filter shoes by category and instant keyword search.
+* **Product Detail**: Multi-size selection (Sizes 38-45) with live stock availability limits.
+* **Shopping Cart & Checkout**: Local guest cart synchronization and authenticated persistent cart, flat-rate shipping calculation, and billing address capture.
+* **Profile Management**: Update profile info and credentials.
 
-### 🛡️ Management Portal (Admin)
-* **KPI Dashboard**: View overall sales revenue, net profit, category counts, and pending supplier invoices.
-* **Catalog Control**: Full CRUD for shoe products, descriptions, pricing, images, and category catalog structures.
-* **Stock Control & Requests**: Monitor stocks across all size tiers (Sizes 38-45) and dispatch stock supply orders directly to suppliers.
-* **Financial Reporting**: Real-time sales journal and net profitability reports.
-* **Invoice Clearance**: Clear pending transactions for completed supplier shipments.
-* **User Management**: Admin control over user accounts, permissions, and roles.
+### 🛡️ Admin Management Portal
+* **Executive KPI Dashboard**: Total products, total live stock across all sizes, category counts, gross revenue, expenditures, and pending supplier invoices.
+* **Catalog Control**: Full CRUD for shoes and categories with image upload management.
+* **Stock Control & Dispatch**: Monitor stock per size tier and dispatch stock replenishment requests directly to suppliers.
+* **Financial & Sales Reports**: Real-time sales journal and net profit calculation.
+* **Supplier Invoice Settlement**: Review and clear supplier invoices upon shipment.
+* **User Management**: Manage administrative, supplier, and customer accounts.
 
 ### 🚚 Supplier Portal
-* **Stock Request Board**: Fulfill pending stock requests dispatched by the store admin.
-* **Fulfillment Action**: Instantly increment catalog stock counts upon shipping.
-* **Invoice Accounting**: Review payment logs and track unpaid/paid supplier statements.
+* **Stock Request Board**: Review incoming shoe demand requests from the admin.
+* **Fulfillment Action**: Instant single-click fulfillment that increments catalog stock automatically.
+* **Invoice Accounting & Payment Logs**: Real-time payment tracking for supplied goods.
 
 ---
 
-## Technology Stack
-
-* **Back-End**: PHP (Native MVC Pattern, PDO Database driver)
-* **Database**: MySQL / MariaDB (Optimized English relational schema with key constraint references)
-* **Front-End Styling**: HTML5, CSS3 Custom Theme System, Bootstrap 5 CSS CDN, Google Fonts (Poppins), FontAwesome 6 Icons
-* **Interactivity**: Vanilla JavaScript, DataTables (Enhanced Bootstrap 5 grids)
-* **Architecture**: Model-View-Controller (MVC) directory structure
+## 🛠️ Technology Stack & Architecture
+* **Framework**: Laravel 11.x (PHP 8.2+)
+* **Database**: SQLite / MySQL / MariaDB (Optimized migrations & seeders included)
+* **Frontend**: Blade Templating, Bootstrap 5, FontAwesome 6, DataTables, Google Fonts (Poppins)
+* **Architecture**: Strict MVC adhering to Clean Code standards (all files strictly ≤ 500 lines)
 
 ---
 
-## Directory Structure
-
-```text
-malshoes/
-├── app/
-│   ├── controllers/      # App routing logic (Admin, Auth, Home, Supplier, User)
-│   ├── core/             # Base MVC classes (App routing, controller base, database engine)
-│   ├── models/           # Data models interacting with MySQL via PDO
-│   └── views/            # Template rendering (Dashboard layouts, layouts components)
-├── database/
-│   └── malshoes.sql      # Database structure and seeds
-├── public/
-│   ├── assets/           # User-uploaded images and product catalog uploads
-│   ├── css/              # Customized CSS components
-│   └── index.php         # Single entry point
-└── README.md             # Project documentation
-```
-
----
-
-## Installation & Setup
-
-### Prerequisites
-* **Web Server**: Apache (XAMPP, Laragon, or custom Nginx with mod_rewrite enabled)
-* **Database**: MySQL/MariaDB (MariaDB 10.1+ recommended)
-* **PHP Engine**: PHP 7.3 or above
-
-### Step-by-Step Installation
+## 🚀 Installation & Setup
 
 1. **Clone the Repository**
-   Clone this repository or move the `malshoes` directory to your web server root (e.g. `htdocs` or `www`).
    ```bash
-   git clone <repository_url> malshoes
+   git clone https://github.com/anasikhzf/footwear-ecommerce-erp.git
+   cd footwear-ecommerce-erp
    ```
 
-2. **Configure Database Schema**
-   * Open PHPMyAdmin or your preferred database GUI (HeidiSQL, DBeaver).
-   * Create a new database named `malshoes` (Collation: `utf8mb4_general_ci`).
-   * Import the [malshoes.sql](file:///d:/www/malshoes/database/malshoes.sql) file located in the `/database` directory.
-
-3. **Verify Web Server Rewrite Configurations**
-   The application uses clean routing urls. Ensure that `.htaccess` is configured correctly in the root directory. XAMPP/Apache must have `mod_rewrite` enabled.
-
-4. **Run Application**
-   Launch your server and visit the address in your browser:
-   ```text
-   http://localhost/malshoes/public/
+2. **Install Composer Dependencies**
+   ```bash
+   composer install
    ```
+
+3. **Configure Environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+4. **Run Migrations & Seeders**
+   ```bash
+   php artisan migrate --seed
+   ```
+
+5. **Start Local Development Server**
+   ```bash
+   php artisan serve
+   ```
+   Visit `http://127.0.0.1:8000` in your browser.
 
 ---
 
-## Demo Credentials
+## 🔐 Demo Credentials
 
-All standard seeded accounts share the default password `password`:
+All seeded accounts use the default password `password`:
 
 | Role | Username | Password | Email |
 | :--- | :--- | :--- | :--- |
 | **User** | `user` | `password` | `user@example.com` |
 | **Admin** | `admin` | `password` | `admin@example.com` |
 | **Supplier** | `supplier` | `password` | `supplier@example.com` |
+
+---
+
+## 📄 License
+This project is open-source software licensed under the [MIT license](LICENSE).
